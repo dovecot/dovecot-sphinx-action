@@ -14,4 +14,5 @@ RUN mkdir /build
 ADD entrypoint.py /entrypoint.py
 ADD sphinx_action /sphinx_action
 
+VOLUME ["/build"]
 ENTRYPOINT ["/entrypoint.py"]
