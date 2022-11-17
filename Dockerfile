@@ -7,6 +7,8 @@ ADD sphinx_action /sphinx_action
 
 RUN useradd -u 1001 -s /bin/sh -m -d /home/runner runner
 USER runner
+ENV HOME=/home/runner
+ENV LOGNAME=runner
 
 RUN pip install \
 	'sphinx-copybutton==0.4.0' \
