@@ -10,7 +10,6 @@ RUN pip install \
 	sphinx-removed-in==0.2.1 \
 	pygments>=2.7.4
 
-RUN mkdir /build
 ADD entrypoint.py /entrypoint.py
 ADD sphinx_action /sphinx_action
 
