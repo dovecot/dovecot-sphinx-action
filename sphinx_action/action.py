@@ -11,6 +11,8 @@ def prepare_manpages():
         subprocess.check_call(['make', '-C', path])
 
 def build_docs():
+    os.mkdir('build')
+    os.chmod('build', 0o7777)
     print("::notice:: Building html documentation - please wait long while")
     build.main(['-M', 'dirhtml', 'source/', 'build', '-W', '-q'])
     os.mkdir('build/mans')
