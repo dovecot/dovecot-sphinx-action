@@ -11,11 +11,11 @@ def prepare_manpages():
         subprocess.check_call(['make', '-C', path])
 
 def build_docs():
-    print("Building html documentation - please wait long while")
+    print("::notice:: Building html documentation - please wait long while")
     build.main(['-M', 'dirhtml', 'source/', '/build', '-W', '-q'])
     os.mkdir('/build/mans')
     for path in glob('source/man') + glob('source/*-man'):
         tag = os.path.basename(path)
-        print("Building man pages to /build/mans/" + tag)
+        print("::notice:: Building man pages to /build/mans/" + tag)
         build.main(['-M', 'man', 'source/', '/build', '-t', tag, '-q'])
         subprocess.check_call(['mv', '/build/man', '/build/mans/' + tag])
