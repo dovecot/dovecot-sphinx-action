@@ -13,5 +13,5 @@ RUN pip install \
 ADD entrypoint.py /entrypoint.py
 ADD sphinx_action /sphinx_action
 
-VOLUME ["/build"]
+USER github
 ENTRYPOINT ["/entrypoint.py"]
