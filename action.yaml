@@ -1,0 +1,9 @@
+name: 'Build documentation'
+description: 'Build documentation and manpages for Dovecot'
+author: 'Aki Tuomi'
+branding:
+  icon: 'book'
+  color: 'yellow'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
