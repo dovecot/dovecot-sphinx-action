@@ -127,7 +127,7 @@ def build_docs():
             '-b',
             'dirhtml',
             'source/',
-            'build',
+            'build/dirhtml',
         ]
     )
 
@@ -163,9 +163,12 @@ def build_mans():
                 "-b",
                 "man",
                 "source/",
-                "build",
+                "build/man",
             ]
         )
+        if return_code != 0:
+            break
+
         subprocess.check_call(["mv", "build/man", "build/mans/" + tag])
         if os.path.exists(log_file):
             with open(log_file, "r") as f:
