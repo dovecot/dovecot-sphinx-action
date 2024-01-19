@@ -21,9 +21,11 @@ def build_docs():
 
     print("::notice:: Building html documentation - please wait long while")
     build.main(['-M', 'dirhtml', 'source/', 'build', '-W', '-q'])
-    os.mkdir('build/mans')
-    for path in glob('source/man') + glob('source/*-man'):
-        tag = os.path.basename(path)
-        print("::notice:: Building man pages to build/mans/" + tag)
-        build.main(['-M', 'man', 'source/', 'build', '-t', tag, '-q'])
-        subprocess.check_call(['mv', 'build/man', 'build/mans/' + tag])
+
+    if os.path.exists("source/man/Makefile"):
+        os.mkdir('build/mans')
+        for path in glob('source/man') + glob('source/*-man'):
+            tag = os.path.basename(path)
+            print("::notice:: Building man pages to build/mans/" + tag)
+            build.main(['-M', 'man', 'source/', 'build', '-t', tag, '-q'])
+            subprocess.check_call(['mv', 'build/man', 'build/mans/' + tag])
