@@ -112,22 +112,22 @@ def build_docs():
         pass
 
     log_file = os.path.join(tempfile.gettempdir(), "sphinx-log")
+
     if os.path.exists(log_file):
         os.unlink(log_file)
 
-    # If we're using make, pass the options as part of the SPHINXOPTS
-    # environment variable, otherwise pass them straight into the command.
     print("[sphinx-action] Building dirhtml")
     return_code = build.main(
         [
-            "-M",
-            "dirhtml",
-            "source/",
-            "build",
-            '-w "{}'.format(log_file),
-            "-q",
-            "--keep-going",
-            "--no-color",
+            '-W',
+            '-w', log_file,
+            '-q',
+            '--keep-going',
+            '--no-color',
+            '-b',
+            'dirhtml',
+            'source/',
+            'build',
         ]
     )
 
@@ -153,17 +153,17 @@ def build_mans():
         print("::notice:: Building man pages to build/mans/" + tag)
         return_code += build.main(
             [
-                "-M",
-                "man",
-                "source/",
-                "build",
                 "-t",
                 tag,
                 "-q",
-                '-w "{}'.format(log_file),
+                '-w', log_file,
                 "-q",
                 "--keep-going",
                 "--no-color",
+                "-b",
+                "man",
+                "source/",
+                "build",
             ]
         )
         subprocess.check_call(["mv", "build/man", "build/mans/" + tag])
