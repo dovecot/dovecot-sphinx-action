@@ -9,5 +9,6 @@ from sphinx_action import action
 # in isolation.
 if __name__ == "__main__":
     print("[sphinx-action] Starting sphinx-action build.")
-    action.prepare_manpages()
+    if os.path.exists("source/man/Makefile"):
+        action.prepare_manpages()
     action.build_docs()
