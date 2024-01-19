@@ -11,4 +11,4 @@ if __name__ == "__main__":
     print("[sphinx-action] Starting sphinx-action build.")
     if os.path.exists("source/man/Makefile"):
         action.prepare_manpages()
-    action.build_docs()
+    action.build_everything()
