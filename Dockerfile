@@ -1,4 +1,4 @@
-FROM sphinxdoc/sphinx:5.3.0
+FROM sphinxdoc/sphinx:7.1.2
 
 LABEL "maintainer"="Dovecot <dovecot@dovecot.org>"
 
